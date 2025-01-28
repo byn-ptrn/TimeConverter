@@ -1,58 +1,58 @@
 def main():
     # Welcome message
-    print("=== TIME CONVERTER ===")
-    print("Tekan Enter untuk memulai...")
+    print("=== Welcome to Time Conversion Application ===")
+    print("Press Enter to start...")
     input()
 
-    konversi_waktu()
+    time_conversion()
 
 
-def konversi_waktu():
-    # Daftar satuan waktu yang valid
-    satuan_valid = ['detik', 'menit', 'jam']
+def time_conversion():
+    # List of valid time units
+    valid_units = ['second', 'minute', 'hour']
 
-    # Input satuan waktu awal
+    # Input initial time unit
     while True:
-        satuan_awal = input("Masukkan satuan waktu awal (detik/menit/jam): ").lower()
-        if satuan_awal in satuan_valid:
+        initial_unit = input("Enter initial time unit (second/minute/hour): ").lower()
+        if initial_unit in valid_units:
             break
-        print("Satuan waktu tidak valid. Silakan coba lagi.")
+        print("Invalid time unit. Please try again.")
 
-    # Input jumlah waktu
+    # Input time amount
     while True:
         try:
-            jumlah = float(input("Masukkan jumlah waktu: "))
+            amount = float(input("Enter the amount of time: "))
             break
         except ValueError:
-            print("Masukan harus berupa angka. Silakan coba lagi.")
+            print("Input must be a number. Please try again.")
 
-    # Input satuan waktu akhir
+    # Input target time unit
     while True:
-        satuan_akhir = input("Masukkan satuan waktu akhir (detik/menit/jam): ").lower()
-        if satuan_akhir in satuan_valid:
+        target_unit = input("Enter target time unit (second/minute/hour): ").lower()
+        if target_unit in valid_units:
             break
-        print("Satuan waktu tidak valid. Silakan coba lagi.")
+        print("Invalid time unit. Please try again.")
 
-    # Konversi ke detik
-    if satuan_awal == 'menit':
-        detik = jumlah * 60
-    elif satuan_awal == 'jam':
-        detik = jumlah * 3600
+    # Convert to seconds
+    if initial_unit == 'minute':
+        seconds = amount * 60
+    elif initial_unit == 'hour':
+        seconds = amount * 3600
     else:
-        detik = jumlah
+        seconds = amount
 
-    # Konversi dari detik ke satuan akhir
-    if satuan_akhir == 'menit':
-        hasil = detik / 60
-    elif satuan_akhir == 'jam':
-        hasil = detik / 3600
+    # Convert from seconds to target unit
+    if target_unit == 'minute':
+        result = seconds / 60
+    elif target_unit == 'hour':
+        result = seconds / 3600
     else:
-        hasil = detik
+        result = seconds
 
-    # Tampilkan hasil
-    print(f"{jumlah} {satuan_awal} = {hasil} {satuan_akhir}")
+    # Display result
+    print(f"{amount} {initial_unit}(s) = {result} {target_unit}(s)")
 
 
-# Jalankan fungsi
+# Run the function
 if __name__ == "__main__":
     main()
